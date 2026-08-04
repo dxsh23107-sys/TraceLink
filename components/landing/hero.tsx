@@ -24,7 +24,7 @@ export function Hero() {
         <div className="animate-float-up">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 font-mono text-xs text-muted-foreground">
             <ShieldCheck className="size-3.5 text-primary" />
-            PUBLIC DATA · OSINT-READY
+            FREE BETA · PUBLIC DATA ONLY
           </span>
 
           <h1 className="mt-6 text-balance text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">

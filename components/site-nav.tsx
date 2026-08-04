@@ -12,8 +12,6 @@ const navItems = [
   { label: 'Features', href: '#features' },
   { label: 'Platforms', href: '#platforms' },
   { label: 'API', href: '#api' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Docs', href: '#docs' },
 ]
 
 export function SiteNav() {
@@ -40,17 +38,10 @@ export function SiteNav() {
 
         <div className="hidden items-center gap-2 md:flex">
           <Button
-            variant="ghost"
-            className="h-9 px-3 text-muted-foreground hover:text-foreground"
-            render={<Link href="/dashboard" />}
-          >
-            Login
-          </Button>
-          <Button
             className="h-9 px-4"
             render={<Link href="/dashboard" />}
           >
-            Sign Up
+            Continue with Google
           </Button>
         </div>
 
@@ -68,7 +59,9 @@ export function SiteNav() {
       <div
         className={cn(
           'glass mx-auto mt-2 max-w-6xl overflow-hidden rounded-2xl border border-border transition-all md:hidden',
-          open ? 'max-h-96 opacity-100' : 'pointer-events-none max-h-0 opacity-0 border-transparent',
+          open
+            ? 'max-h-96 opacity-100'
+            : 'pointer-events-none max-h-0 opacity-0 border-transparent',
         )}
       >
         <nav className="flex flex-col p-2" aria-label="Mobile">
@@ -82,16 +75,13 @@ export function SiteNav() {
               {item.label}
             </Link>
           ))}
-          <div className="mt-2 flex gap-2 border-t border-border p-2">
+
+          <div className="mt-2 border-t border-border p-2">
             <Button
-              variant="outline"
-              className="h-9 flex-1"
+              className="h-9 w-full"
               render={<Link href="/dashboard" />}
             >
-              Login
-            </Button>
-            <Button className="h-9 flex-1" render={<Link href="/dashboard" />}>
-              Sign Up
+              Continue with Google
             </Button>
           </div>
         </nav>

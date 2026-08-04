@@ -27,7 +27,7 @@ import {
   HistoryTimeline,
   type HistoryEntry,
 } from '@/components/dashboard/history-timeline'
-import { generateResults, type ProfileResult } from '@/lib/mock-results'
+import { type ProfileResult } from '@/lib/mock-results'
 import { exportCSV, exportJSON, exportPDF } from '@/lib/export'
 import { cn } from '@/lib/utils'
 
@@ -65,25 +65,42 @@ export function Dashboard() {
     setActiveQuery(trimmed)
     setFilters(defaultFilters)
     if (timer.current) clearTimeout(timer.current)
-    timer.current = setTimeout(() => {
-      const generated = generateResults(trimmed)
-      setResults(generated)
-      setSearching(false)
-      setHistory((prev) =>
-        [
-          {
-            id: `${Date.now()}`,
-            query: trimmed,
-            mode: m,
-            count: generated.length,
-            time: new Date().toLocaleTimeString([], {
-              hour: '2-digit',
-              minute: '2-digit',
-            }),
+    timer.current = setTimeout(async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/search/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
           },
-          ...prev,
-        ].slice(0, 20),
-      )
+          body: JSON.stringify({
+            query: trimmed,
+            type: m,
+          }),
+        })
+
+        const data = await response.json()
+
+        setResults(data.results)
+        setSearching(false)
+        setHistory((prev) =>
+          [
+            {
+              id: `${Date.now()}`,
+              query: trimmed,
+              mode: m,
+              count: data.total_results,
+              time: new Date().toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit',
+              }),
+            },
+            ...prev,
+          ].slice(0, 20),
+        )
+      } catch (error) {
+        console.error('Search failed:', error)
+        setSearching(false)
+      }
     }, 1400)
   }
 

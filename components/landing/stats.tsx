@@ -1,8 +1,8 @@
 const stats = [
-  { value: '180+', label: 'Supported Platforms' },
-  { value: '1.4s', label: 'Average Search Time' },
-  { value: '2.9M', label: 'Searches Completed' },
-  { value: '100%', label: 'Public Sources' },
+  { value: '200+', label: 'Supported Platforms' },
+  { value: '<2s', label: 'Average Search Time' },
+  { value: '100K+', label: 'Public Searches' },
+  { value: '100%', label: 'Public Data Only' },
 ]
 
 export function Stats() {

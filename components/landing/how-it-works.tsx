@@ -13,23 +13,23 @@ const steps: Step[] = [
   {
     icon: AtSign,
     step: '01',
-    title: 'Enter Email or Username',
+    title: 'Enter an Email or Username',
     description:
-      'Drop in an email address or a handle. Toggle the input mode and hit search — no setup required.',
+      'Type an email address or username to begin searching across supported public platforms.',
   },
   {
     icon: Radar,
     step: '02',
-    title: 'Search Multiple Platforms',
+    title: 'Scan Public Platforms',
     description:
-      'TraceLink fans out across every supported public source in parallel and tracks each response live.',
+      'TraceLink searches hundreds of public sources simultaneously and gathers matching profiles in seconds.',
   },
   {
     icon: ListChecks,
     step: '03',
-    title: 'Review Results',
+    title: 'Explore the Results',
     description:
-      'Explore normalized profile cards, filter by platform, and export everything you need in one click.',
+      'View discovered public profiles in one clean dashboard and quickly navigate between platforms.',
   },
 ]
 
@@ -42,29 +42,33 @@ export function HowItWorks() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="HOW IT WORKS"
-          title="From handle to full picture in three steps"
-          subtitle="A guided flow that turns a single identifier into a complete public footprint."
+          title="Find Public Profiles in Three Simple Steps"
+          subtitle="A simple workflow that helps you discover publicly available digital footprints within seconds."
         />
 
         <div className="relative mt-12 grid gap-4 md:grid-cols-3">
           <div className="pointer-events-none absolute inset-x-16 top-16 hidden h-px bg-gradient-to-r from-transparent via-border to-transparent md:block" />
+
           {steps.map((s, i) => (
             <article
               key={s.step}
-              className="animate-float-up relative rounded-2xl border border-border bg-card p-6"
+              className="animate-float-up relative rounded-2xl border border-border bg-card p-6 transition-all hover:border-primary/40"
               style={{ animationDelay: `${i * 120}ms` }}
             >
               <div className="flex items-center justify-between">
                 <div className="flex size-12 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 text-primary">
                   <s.icon className="size-5" />
                 </div>
+
                 <span className="font-mono text-3xl font-bold text-secondary-foreground/20">
                   {s.step}
                 </span>
               </div>
+
               <h3 className="mt-5 text-lg font-semibold text-foreground">
                 {s.title}
               </h3>
+
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {s.description}
               </p>

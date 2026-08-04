@@ -11,23 +11,27 @@ interface Item {
 const items: Item[] = [
   {
     icon: Lock,
-    title: 'TLS Encryption',
-    description: 'All traffic is encrypted in transit with modern TLS. Nothing leaves your session in the clear.',
+    title: 'Secure Connection',
+    description:
+      'All communication between your browser and TraceLink is protected using modern HTTPS encryption.',
   },
   {
     icon: EyeOff,
-    title: 'Privacy',
-    description: 'We never sell data. Queries are yours alone and can be purged from history at any time.',
+    title: 'Privacy Focused',
+    description:
+      'We respect your privacy and never sell or share your search history with third parties.',
   },
   {
     icon: Globe2,
     title: 'Public Data Only',
-    description: 'Results come exclusively from publicly accessible sources — no private or gated content.',
+    description:
+      'TraceLink searches only publicly available information. No private accounts or restricted content are accessed.',
   },
   {
     icon: ScrollText,
-    title: 'Audit Logs',
-    description: 'Every search is logged with a timestamp, giving teams a clear, reviewable activity trail.',
+    title: 'Search History',
+    description:
+      'Access your previous searches anytime from your dashboard for faster future investigations.',
   },
 ]
 
@@ -36,23 +40,25 @@ export function Security() {
     <section className="px-4 py-16 md:py-24">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          eyebrow="SECURITY"
-          title="Built responsibly, secured by default"
-          subtitle="TraceLink is designed for ethical, transparent research on public information."
+          eyebrow="SECURITY & PRIVACY"
+          title="Designed with Security in Mind"
+          subtitle="Your searches remain secure while TraceLink focuses only on publicly available information."
         />
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item) => (
             <article
               key={item.title}
-              className="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
+              className="rounded-2xl border border-border bg-card p-6 transition-all hover:border-primary/40 hover:-translate-y-1"
             >
               <div className="flex size-11 items-center justify-center rounded-xl border border-border bg-secondary text-primary">
                 <item.icon className="size-5" />
               </div>
+
               <h3 className="mt-4 text-base font-semibold text-foreground">
                 {item.title}
               </h3>
+
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {item.description}
               </p>
